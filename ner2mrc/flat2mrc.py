@@ -39,10 +39,10 @@ def convert_file(input_file, output_file, tag2query_file):
     print(f"Convert {origin_count} samples to {new_count} samples and save to {output_file}")
 
 
-def main():
-    msra_raw_dir = "/mnt/mrc/zh_msra_yuxian"
-    msra_mrc_dir = "/mnt/mrc/zh_msra_yuxian/mrc_format"
-    tag2query_file = "queries/zh_msra.json"
+def main(dataset):
+    msra_raw_dir = f"../datasets/{dataset}"
+    msra_mrc_dir = f"../datasets/{dataset}"
+    tag2query_file = f"queries/{dataset}.json"
     os.makedirs(msra_mrc_dir, exist_ok=True)
     for phase in ["train", "dev", "test"]:
         old_file = os.path.join(msra_raw_dir, f"{phase}.tsv")
@@ -51,4 +51,4 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    main(dataset="zh_msra")
